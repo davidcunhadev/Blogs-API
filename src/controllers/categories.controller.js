@@ -7,6 +7,13 @@ const insert = async (req, res) => {
   return res.status(201).json(newCategory);
 };
 
+const listAll = async (req, res) => {
+  const allCategories = await categoriesService.listAll();
+
+  return res.status(200).json(allCategories);
+};
+
 module.exports = {
   insert,
+  listAll,
 };
