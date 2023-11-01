@@ -22,10 +22,7 @@ const listAll = async () => {
 };
 
 const listById = async (id) => {
-  const user = await User.findByPk({
-    where: { id },
-    attributes: { exclude: ['password'] },
-  });
+  const user = await User.findByPk(id, { attributes: { exclude: ['password'] } });
 
   return user;
 };
