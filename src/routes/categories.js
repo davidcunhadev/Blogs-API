@@ -5,5 +5,6 @@ const validateInsertCategoryValues = require('../middlewares/validateInsertCateg
 
 route.post('/', validateInsertCategoryValues, validateToken, categoriesController.insert);
 route.get('/', validateToken, categoriesController.listAll);
+route.get('/:id', validateToken, categoriesController.listCategoryById);
 
 module.exports = route;

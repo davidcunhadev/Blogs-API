@@ -1,5 +1,14 @@
 const { postService } = require('../services');
 
+const insert = async (req, res) => {
+  const { user } = req;
+  const { title, content, categoryIds } = req.body;
+  
+  const newPost = await postService.insert(user, title, content, categoryIds);
+  
+  return res.status(201).json(newPost);
+};
+
 const listAll = async (req, res) => {
   const allPosts = await postService.listAll();
 
@@ -17,6 +26,7 @@ const listPostById = async (req, res) => {
 };
 
 module.exports = {
+  insert,
   listAll,
   listPostById,
 };

@@ -1,4 +1,26 @@
-const { BlogPost, User, Category } = require('../models');
+const db = require('../models');
+const { BlogPost, User, Category, PostCategory } = require('../models');
+
+const insert = async (user, title, content, categoryIds) => {
+  const t = await db.sequelize.transaction();
+  try {
+    const newPost = await BlogPost.create({
+      title,
+      content,
+      categoryIds,
+      userId: user.id,
+      published: Date.now(),
+      updated: Date.now(), 
+    });
+
+    await Promise.all(categoryIds.map((categoryId) =>
+      PostCategory.create({ postId: newPost.id, categoryId })));
+    await t.commit();
+    return newPost;
+  } catch (error) {
+    await t.rollback();
+  }
+};
 
 const listAll = async () => {
   const allPosts = await BlogPost.findAll({
@@ -23,6 +45,7 @@ const listPostById = async (id) => {
 };
 
 module.exports = {
+  insert,
   listAll,
   listPostById,
 };

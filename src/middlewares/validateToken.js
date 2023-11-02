@@ -14,7 +14,9 @@ const validateToken = async (req, res, next) => {
   const token = extractToken(authorization);
 
   try {
-    jwt.verify(token, SECRET_KEY);
+    const user = jwt.verify(token, SECRET_KEY);
+    
+    req.user = user;
 
     next();
   } catch (error) {

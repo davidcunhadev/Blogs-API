@@ -13,7 +13,15 @@ const listAll = async (req, res) => {
   return res.status(200).json(allCategories);
 };
 
+const listCategoryById = async (req, res) => {
+  const { id } = req.params;
+  const category = await categoriesService.listCategoryById(id);
+
+  return res.status(200).json(category);
+};
+
 module.exports = {
   insert,
   listAll,
+  listCategoryById,
 };
