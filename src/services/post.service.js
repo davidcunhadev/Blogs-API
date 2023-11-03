@@ -44,8 +44,26 @@ const listPostById = async (id) => {
   return post;
 };
 
+const update = async (id, user, title, content) => {
+  const findUser = await User.findByPk(id, { attributes: { exclude: ['password'] } });
+  const t = await db.sequelize.transaction();
+
+  try {
+    if (findUser.id !== user.id) {
+      return null;
+    }
+
+    await BlogPost.update({ title, content }, { where: { id } });
+    const updatedPost = await listPostById(id);
+    return updatedPost;
+  } catch (error) {
+    await t.rollback();
+  }
+};
+
 module.exports = {
   insert,
   listAll,
   listPostById,
+  update,
 };

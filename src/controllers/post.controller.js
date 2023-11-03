@@ -25,8 +25,23 @@ const listPostById = async (req, res) => {
   return res.status(200).json(post);
 };
 
+const update = async (req, res) => {
+  const { id } = req.params;
+  const { user } = req;
+  const { title, content } = req.body;
+
+  const updatedPost = await postService.update(id, user, title, content);
+
+  if (!updatedPost) {
+    return res.status(401).json({ message: 'Unauthorized user' });
+  }
+
+  return res.status(200).json(updatedPost);
+};
+
 module.exports = {
   insert,
   listAll,
   listPostById,
+  update,
 };

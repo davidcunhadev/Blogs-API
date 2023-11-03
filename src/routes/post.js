@@ -4,6 +4,7 @@ const validateToken = require('../middlewares/validateToken');
 const {
   validateInsertPostInputValues,
   validateInsertPostCategories,
+  validateUpdatePost,
 } = require('../middlewares/validateInsertPostInputValues');
 
 route.post(
@@ -15,5 +16,6 @@ route.post(
 );
 route.get('/', validateToken, postController.listAll);
 route.get('/:id', validateToken, postController.listPostById);
+route.put('/:id', validateToken, validateUpdatePost, postController.update);
 
 module.exports = route;
