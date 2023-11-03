@@ -17,5 +17,6 @@ route.post(
 route.get('/', validateToken, postController.listAll);
 route.get('/:id', validateToken, postController.listPostById);
 route.put('/:id', validateToken, validateUpdatePost, postController.update);
+route.delete('/:id', validateToken, postController.deletePost);
 
 module.exports = route;
