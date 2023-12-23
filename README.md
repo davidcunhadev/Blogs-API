@@ -91,7 +91,7 @@ npm run prestart
 
 <ul>
   <details>
-    <summary><strong><code>/LOGIN</code></strong></summary>
+    <summary><strong><code>/login</code></strong></summary>
     
   <li><h3>POST <code>/login</code></h3></li>
   <p>Esta rota possibilita o login de um usuário.</p>
@@ -121,7 +121,7 @@ npm run prestart
 <hr>
 
 <details>
-  <summary><strong><code>/USER</code></strong></summary>
+  <summary><strong><code>/user</code></strong></summary>
   
 <li><h3>GET <code>/user</code></h3></li>
 <p>Esta rota retorna a lista de todas as pessoas cadastradas no banco de dados.</p>
@@ -228,7 +228,7 @@ Token gerado anteriormente logo abaixo:
 <hr>
 
 <details>
-  <summary><strong><code>/CATEGORIES</code></strong></summary>
+  <summary><strong><code>/categories</code></strong></summary>
 <li><h3>GET <code>/categories</code></h3></li>
 <p>Esta rota retorna a lista de todas as categorias cadastradas no banco de dados.</p>
 
@@ -322,7 +322,7 @@ Token gerado anteriormente logo abaixo:
 <hr>
 
 <details>
-  <summary><strong><code>/POST</code></strong></summary>
+  <summary><strong><code>/post</code></strong></summary>
 
   <li><h3>GET <code>/post</code></h3></li>
   <p>Esta rota retorna a lista de todos os posts cadastrados no banco de dados.</p>
